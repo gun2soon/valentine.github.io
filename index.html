@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Courier';
+			background-color:#FF69B4;
+            color:  #F8C8DC;
+        }
+        #valentineQuestion {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .answerButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            font-family: 'courier';
+            margin-bottom: 20px;
+            background-color:#FFE3E1;
+            color: #e67373;
+            border-radius: 12px;
+            border: 2px solid #FFE3E1;
+        }
+
+        .display {
+            background-color: white;
+            width: 320px;
+            height: 300px;
+            margin: 20px auto;
+            border: 1px solid white;
+            background-image: url(qoobee-hi.gif);
+        }
+        
+        .answerButton:hover{
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+    <button class="answerButton" onclick="location.href='thankyou.html'"onmouseover="changeImage('qoobee-heart.gif')" onmouseout="resetImage()">Yes</button>
+    <button class="answerButton" id="noButton"onmouseover="changeImage('qoobee-sad.gif')" onmouseout="resetImage()">I no no wanna o(╥﹏╥)o</button>
+    <br>
+    <div class="display"></div>
+
+    <script>
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            var yesButton = document.querySelector('button[onclick*="thankyou.html"]');
+            var currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 5px
+        });
+
+        function changeImage(imageUrl) {
+            document.querySelector('.display').style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+        
+        function resetImage() {
+            document.querySelector('.display').style.backgroundImage = 'url(qoobee-hi.gif)';
+        }
+    </script>
+</body>
+</html>
