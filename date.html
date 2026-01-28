@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	<title>Date</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 	<style>
 	body {
             text-align: center;
@@ -24,26 +25,73 @@
 		align-items: center;
 	}
 	.button {
-            padding: 6px 10px;
-            font-size: 14px;
-            cursor: pointer;
-            margin: 10px;
-            font-family: 'courier';
-            margin-bottom: 10px;
-            background-color:#FFE3E1;
-            color: #e67373;
-            border-radius: 12px;
-            border: 2px solid #FFE3E1;
-        }
+    position: relative; /* Required to position the "See you!" text */
+    width: 110px;       /* Fixed width to keep things steady */
+    height: 35px;      /* Fixed height for alignment */
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px;
+    font-family: 'courier';
+    background-color: #FFE3E1;
+    color: #e67373;
+    border-radius: 12px;
+    border: 2px solid #FFE3E1;
+    overflow: hidden;   /* Keeps the text inside the rounded corners */
+    }
+
+    /* The original text */
+    .button span {
+        display: inline-block;
+        transition: opacity 0.3s ease;
+    }
+
+    /* The "See you!" text */
+    .button::after {
+        content: "See you!";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%); /* Centers it vertically */
+        opacity: 0;                  /* Hidden by default */
+        transition: opacity 0.3s ease;
+    }
+
+    /* The Hover Magic */
+    .button:hover span {
+        opacity: 0; /* Fades out "Submit" */
+    }
+
+    .button:hover::after {
+        opacity: 1; /* Fades in "See you!" */
+    }
+
+    /* Only show the hover effect if the input nearby is VALID */
+    #date-picker:valid ~ .button:hover span {
+        opacity: 0;
+    }
+
+    #date-picker:valid ~ .button:hover::after {
+        opacity: 1;
+    }
+
+    /* Optional: Make the button look slightly faded until a date is picked */
+    .button:invalid {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
 	</style>
 </head>
 <body>
-	<h1 title="choose a date">Are you free on ...</h1>
-	<p>(select a date)</p>
-	<form action="/action_page.php" class="form-group">
-		<label>Which day: </label>
-		<input type="date">
-		<button class = "button"type="submit" formaction="food.html">Submit</button>
-	</form>
+    <h1 title="choose a date">Are you free on ...</h1>
+    <p>(select a date)</p>
+    <form action="/action_page.php" class="form-group">
+    <label>Which day: </label>
+    <input type="date" id="date-picker" min="2026-02-11" max="2026-02-11" required>
+   <button class="button" type="submit" formaction="message.html">
+    <span>Submit</span>
+</button>
+</form>
 </body>
 </html>

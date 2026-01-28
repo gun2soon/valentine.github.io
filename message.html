@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ate Honey</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        body {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Courier';
+            background-color: #FF69B4; 
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* The New Personalized Title */
+        h1 {
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: #FFE3E1;
+            text-shadow: 3px 3px #e67373;
+            letter-spacing: 2px;
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .photo-container img {
+            width: 250px;
+            height: 320px;
+            object-fit: cover;
+            border: 10px solid #ffffff; /* Classic white photo border */
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Fun tilt effect for the photos */
+        .photo-container img:nth-child(odd) { transform: rotate(-2deg); }
+        .photo-container img:nth-child(even) { transform: rotate(2deg); }
+
+        .photo-container img:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .message-card {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 2px solid #FFE3E1;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 19px;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .button {
+            margin-top: 50px;
+            padding: 15px 45px;
+            font-size: 20px;
+            cursor: pointer;
+            font-family: 'Courier';
+            background-color: #FFE3E1;
+            color: #e67373;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px #d46666;
+        }
+
+        .button:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 7px #d46666;
+        }
+
+        .button:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px #d46666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>For Ate Honey 🍯❤️</h1>
+
+    <div class="photo-container">
+        <img src="1.JPG" alt="Ate Honey Photo 1">
+        <img src="2.JPG" alt="Ate Honey Photo 2">
+        <img src="3.JPG" alt="Ate Honey Photo 3">
+    </div>
+
+    <div class="message-card">
+        <p>
+            To my Ate 🍯,
+
+            I wanted to create a little corner of the internet just for you. 
+            Thank you for always being so wonderful and for making everything 
+            a bit brighter. 
+    <br><br>       
+            I’m really excited for our date on the 11th—I’ve got a feeling 
+            it’s going to be the best part of my week! Hope you like this 
+            tiny surprise. ❤️
+    <br><br>        
+            Can't wait for our date! ✨
+        </p>
+    </div>
+
+    <button class="button" onclick="location.href='lastpage.html'">
+        Continue UWU
+    </button>
+    
+</body>
+</html>
