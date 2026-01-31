@@ -1,57 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="favicon.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Happy Valentines, Ate Honey </title>
-		<link rel="stylesheet" href="flower.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentines, Ate Honey</title>
+    <link rel="stylesheet" href="flower.css">
+    <style>
+        /* OVERRIDE flower.css: Center the entire stage */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #FF69B4 !important; /* Signature Pink */
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            height: 100vh !important;
+            overflow: hidden !important;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FF69B4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        #reveal-btn {
+            padding: 15px 40px;
+            font-size: 20px;
+            font-family: 'Courier';
+            background-color: #FFE3E1;
+            color: #e67373;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* The Reveal Container */
+        #main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 2s ease;
+            width: 100%;
+        }
+
+        /* This ensures the flowers aren't cut off at the top */
+        .flower {
+            position: relative;
+            height: 50vh; /* Keeps space for the flowers to bloom upward */
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            transform: scale(0.85); /* Adjust this if they look too small/big */
+        }
+
+        /* Positioning the text specifically at the bottom of the vase */
+        #thankyou {
+            margin: 0 !important; /* Removes the 400px from flower.css */
+            padding-top: 20px !important;
+            font-size: 38px !important;
+            color: #F8C8DC !important;
+            font-family: 'Courier', monospace;
+            width: auto !important;
+            position: relative !important;
+            text-shadow: 2px 2px #e67373;
+        }
+    </style>
 </head>
 <body>
-	<div id="thankyou"><b>Happy Valentines!</b></div>
-	<div class="flower">
-        <div class="f-wrapper">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
-            </div>
-        </div>
 
-        <div class="f-wrapper f-wrapper--2">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
-            </div>
-        </div>
+    <audio id="bg-music">
+        <source src="./lastpagemusic.m4a" type="audio/mp4">
+    </audio>
 
-        <div class="f-wrapper f-wrapper--3">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
-            </div>
-        </div>
-        <div class="flower__glass"></div>
+    <div id="overlay">
+        <button id="reveal-btn" onclick="startEverything()">Click for your final surprise, Ate Honey ❤️</button>
     </div>
+
+    <div id="main-content">
+        <div class="flower">
+            <div class="f-wrapper">
+                <div class="flower__line"></div>
+                <div class="f">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__leaf flower__leaf--5"></div>
+                    <div class="flower__leaf flower__leaf--6"></div>
+                    <div class="flower__leaf flower__leaf--7"></div>
+                    <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+                </div>
+            </div>
+
+            <div class="f-wrapper f-wrapper--2">
+                <div class="flower__line"></div>
+                <div class="f">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__leaf flower__leaf--5"></div>
+                    <div class="flower__leaf flower__leaf--6"></div>
+                    <div class="flower__leaf flower__leaf--7"></div>
+                    <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
+                </div>
+            </div>
+
+            <div class="f-wrapper f-wrapper--3">
+                <div class="flower__line"></div>
+                <div class="f">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__leaf flower__leaf--5"></div>
+                    <div class="flower__leaf flower__leaf--6"></div>
+                    <div class="flower__leaf flower__leaf--7"></div>
+                    <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
+                </div>
+            </div>
+            <div class="flower__glass"></div>
+        </div>
+
+        <div id="thankyou"><b>Happy Valentines!</b></div>
+    </div>
+
+    <script>
+        function startEverything() {
+            const music = document.getElementById('bg-music');
+            music.play().catch(e => console.error("Music playback blocked:", e));
+
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 1000);
+
+            const content = document.getElementById('main-content');
+            content.style.visibility = 'visible';
+            content.style.opacity = '1';
+        }
+    </script>
 </body>
 </html>
