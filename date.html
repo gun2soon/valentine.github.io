@@ -82,6 +82,26 @@
         cursor: not-allowed;
     }
 	</style>
+    <script>
+    const datePicker = document.getElementById('date-picker');
+
+    // This checks the date as soon as she picks it
+    datePicker.addEventListener('input', function() {
+        if (this.value !== "2026-02-11") {
+            // Force it back to the only allowed date
+            this.value = "2026-02-11";
+            alert("Wait! It has to be February 11! ❤️");
+        }
+    });
+
+    // Final check when the form tries to submit
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (datePicker.value !== "2026-02-11") {
+            e.preventDefault(); // Stops the page from changing
+            alert("Please pick February 11 first! 😊");
+        }
+    });
+</script>
 </head>
 <body>
     <h1 title="choose a date">Are you free on ...</h1>
